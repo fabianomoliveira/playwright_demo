@@ -12,13 +12,18 @@ Given("the user is on the main page", {timeout: 15000}, async () => {
   mainPage = new MainPage(page);
   await mainPage.goto();
 
-  try {
-    await mainPage.AcceptAllCookiesLocator.waitFor({ state: "visible", timeout: 10000 });
-    await mainPage.AcceptAllCookiesLocator.click();
-    await mainPage.PopupNewsletterCloseButtonLocator.waitFor({ state: "visible", timeout: 10000 });
-    await mainPage.PopupNewsletterCloseButtonLocator.click();
-  } catch (err) {
-    console.error("Cookie button did not appear within 10 seconds; continuing without accepting it.", err);
+  // Attempt to accept cookies if the button becomes visible quickly (non-blocking)
+  if (await mainPage.AcceptAllCookiesLocator.isVisible({ timeout: 10000 }).catch(() => false)) {
+    await mainPage.AcceptAllCookiesLocator.click().catch(() => {});
+  } else {
+    console.warn("Cookie button not visible - continuing without accepting.");
+  }
+
+  // Attempt to close newsletter popup if it appears quickly (non-blocking)
+  if (await mainPage.PopupNewsletterCloseButtonLocator.isVisible({ timeout: 10000 }).catch(() => false)) {
+    await mainPage.PopupNewsletterCloseButtonLocator.click().catch(() => {});
+  } else {
+    console.warn("Newsletter popup not visible - continuing without closing.");
   }
   
   await expect(page).toHaveTitle(

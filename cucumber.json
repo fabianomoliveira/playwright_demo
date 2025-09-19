@@ -3,6 +3,14 @@
     "require": ["steps/**/*.ts"],
     "paths": ["features/**/*.feature"],
     "requireModule": ["ts-node/register"],
-    "format": ["html:cucumber-report.html"]
+    "format": [
+      "html:cucumber-report.html",
+      "json:cucumber-report.json",
+      "@cucumber/pretty-formatter"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "publishQuiet": true
   }
 }
