@@ -1,0 +1,21 @@
+{
+  "name": "playwright-testing",
+  "version": "1.0.0",
+  "description": "This is the repository for the LinkedIn Learning course `learning-playwright`. The full course is available from [LinkedIn Learning][lil-course-url].",
+  "main": "index.js",
+  "scripts": {
+    "c": "cucumber-js",
+    "test:chromium": "npx playwright test --project chromium",
+    "test:report": "npx playwright test && npx playwright show-report",
+    "test:ui": "npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4",
+    "ts-node": "^10.9.2"
+  }
+}

@@ -1,0 +1,4 @@
+email,expectedResult
+fabiano@maildrop.cc,Success
+invalid.email@,Failure
+no-at-sign.com,Failure
