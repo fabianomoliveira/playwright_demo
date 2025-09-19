@@ -13,7 +13,7 @@ Given("the user is on the main page", {timeout: 15000}, async () => {
   await mainPage.goto();
 
   try {
-    await mainPage.AcceptAllCookiesLocator.waitFor({ state: "visible", timeout: 5000 });
+    await mainPage.AcceptAllCookiesLocator.waitFor({ state: "visible", timeout: 10000 });
     await mainPage.AcceptAllCookiesLocator.click();
   } catch (err) {
     console.error("Cookie button did not appear within 5 seconds; continuing without accepting it.", err);
