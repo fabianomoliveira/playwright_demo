@@ -3,12 +3,18 @@ import {Page, Locator} from '@playwright/test';
 export class MainPage{
   readonly page: Page;
   readonly AcceptAllCookiesLocator: Locator;
+  readonly PopupNewsletterCloseButtonLocator: Locator;
   readonly SigninLinkLocator: Locator;
+  readonly LoginButtonLocator: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.AcceptAllCookiesLocator = page.getByRole("button", { name: "Accept All Cookies" });
-    this.SigninLinkLocator = page.getByRole('link', { name: 'Account' });
+    this.SigninLinkLocator = page.getByLabel("Account");
+    this.LoginButtonLocator = page.getByLabel('Login');
+    this.PopupNewsletterCloseButtonLocator = page.getByRole("button", {
+      name: "Accept All Cookies",
+    });
   }
 
   async goto() {

@@ -28,7 +28,8 @@ When("the user clicks on the sign-in button and enters valid email", async () =>
   accountPage = new AccountPage(page);
   mainPage = new MainPage(page);
   await mainPage.SigninLinkLocator.click();
-  await accountPage.SigninTitleLocator.waitFor({ state: 'visible', timeout: 5000 });
+  await mainPage.LoginButtonLocator.click();
+  await accountPage.SigninTitleLocator.waitFor({ state: 'visible', timeout: 10000 });
   await accountPage.EmailInputLocator.fill("fabiano@maildrop.cc");
 });
 
