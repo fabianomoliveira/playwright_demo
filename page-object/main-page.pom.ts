@@ -12,9 +12,10 @@ export class MainPage{
     this.AcceptAllCookiesLocator = page.getByRole("button", { name: "Accept All Cookies" });
     this.SigninLinkLocator = page.getByLabel("Account");
     this.LoginButtonLocator = page.getByLabel('Login');
-    this.PopupNewsletterCloseButtonLocator = page.getByRole("button", {
-      name: "Accept All Cookies",
-    });
+    this.PopupNewsletterCloseButtonLocator = page
+      .locator('iframe[title="Sign Up via Text for Offers"]')
+      .contentFrame()
+      .getByTestId("closeIcon");
   }
 
   async goto() {

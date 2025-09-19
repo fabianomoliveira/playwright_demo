@@ -8,7 +8,7 @@ export class AccountPage{
 
   constructor(page: Page) {
     this.page = page;
-    this.SigninTitleLocator = page.getByRole('heading', { name: 'Sign in' });
+    this.SigninTitleLocator = page.locator("h2", { hasText: "Sign in" });
     this.EmailInputLocator = page.getByRole("textbox", { name: "Email" });
     this.PopUpShopiFramelocator = page.locator('[data-testid="authorize-iframe"]');
   }

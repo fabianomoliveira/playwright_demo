@@ -19,7 +19,8 @@ test('Home Page', async ({ page }) => {
   await expect(page).toHaveTitle("SPANX | Shapewear, Clothing, Activewear & Intimates");
 
   // Click on Profile Image
-  await page.getByRole('link', { name: 'Account' }).click();
+  await page.getByLabel("Account").click();
+  await page.getByLabel('Login').click();
 
   // Check if the account menu is visible
   await page.locator('h2', { hasText: 'Sign in' }).waitFor({ state: 'visible', timeout: 5000 });

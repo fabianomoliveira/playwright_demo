@@ -15,8 +15,10 @@ Given("the user is on the main page", {timeout: 15000}, async () => {
   try {
     await mainPage.AcceptAllCookiesLocator.waitFor({ state: "visible", timeout: 10000 });
     await mainPage.AcceptAllCookiesLocator.click();
+    await mainPage.PopupNewsletterCloseButtonLocator.waitFor({ state: "visible", timeout: 10000 });
+    await mainPage.PopupNewsletterCloseButtonLocator.click();
   } catch (err) {
-    console.error("Cookie button did not appear within 5 seconds; continuing without accepting it.", err);
+    console.error("Cookie button did not appear within 10 seconds; continuing without accepting it.", err);
   }
   
   await expect(page).toHaveTitle(
