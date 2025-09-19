@@ -24,12 +24,18 @@ Given("the user is on the main page", {timeout: 15000}, async () => {
   );
 });
 
-When("the user clicks on the sign-in button and enters valid email", async () => {
+When("the user clicks on the sign-in button and enters valid email", { timeout: 20000 }, async () => {
   accountPage = new AccountPage(page);
   mainPage = new MainPage(page);
+
+  await mainPage.SigninLinkLocator.waitFor({ state: 'visible', timeout: 10000 });
   await mainPage.SigninLinkLocator.click();
+
+  await mainPage.LoginButtonLocator.waitFor({ state: 'visible', timeout: 10000 });
   await mainPage.LoginButtonLocator.click();
+
   await accountPage.SigninTitleLocator.waitFor({ state: 'visible', timeout: 10000 });
+  await accountPage.EmailInputLocator.waitFor({ state: 'visible', timeout: 10000 });
   await accountPage.EmailInputLocator.fill("fabiano@maildrop.cc");
 });
 
